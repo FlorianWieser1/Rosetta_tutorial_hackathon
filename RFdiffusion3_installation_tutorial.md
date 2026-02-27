@@ -8,6 +8,8 @@
     - [Step 2: Installing RFdiffusion3](#step-2-installing-rfdiffusion3)
     - [Step 3: Verify the installation](#step-3-verify-the-installation)
 - [GPU vs. CPU Execution](#gpu-vs-cpu-execution)
+    - [How RFdiffusion3 detects and uses your GPU](#how-rfdiffusion3-detects-and-uses-your-gpu)
+    - [Running on latest GPU architectures (e.g. Blackwell)](#running-on-latest-gpu-architectures-eg-blackwell)
 - [Glossary](#glossary)
 - [Resources & References](#resources--references)
 
@@ -122,7 +124,7 @@ EOF
 Make sure your Conda environment is activated before running this check.
 If <code>CUDA available: True</code> is printed and a GPU name appears, [pytorch](#PyTorch) can access your GPU.
 
-## Running an latest GPU architectures (e.g. Blackwell)
+## Running on latest GPU architectures (e.g. Blackwell)
 Very recent NVIDIA GPU architectures (such as Lovelace or Blackwell) may require:
 - A sufficiently new NVIDIA driver
 - A compatible CUDA runtime
