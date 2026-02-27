@@ -116,3 +116,7 @@ A value stored in the shell session that software can read to determine paths or
 
 
 ## Resources & References
+- RosettaCommons Foundry (GitHub Repository) https://github.com/RosettaCommons/foundry
+- RFdiffusion Documentation https://github.com/RosettaCommons/foundry/tree/production/models/rfd3
+- RFdiffusion3 publication https://www.science.org/doi/10.1126/science.ade2574
+- PyMOL visualization software https://pymol.org/
