@@ -56,7 +56,7 @@ The displayed path should point to the newly created Conda environment, for exam
 /home/florian_wieser/miniconda3/envs/RFD3/bin/python</code>  
 
 ### Step 2: Installing RFdiffusion3
-RFdiffusion 3 is distributed as part of the <code>rc-foundry</code> Python package. Foundry is the RosettaCommons framework that provides a unified command-line interface for running multiple protein modeling and design deep learning models. It includes RosettaFold3 for structure prediction, ProteinMPNN for inverse folding and RFdiffusion3 for generative protein design. While this tutorial focuses on RFdiffusion3, RosettaFold3 and ProteinMPNN can be installed in a similiar manner.  
+RFdiffusion 3 is distributed as part of the <code>rc-foundry</code> Python package. [Foundry](#foundry) is the RosettaCommons framework that provides a unified command-line interface for running multiple protein modeling and design deep learning models. It includes RosettaFold3 for structure prediction, ProteinMPNN for inverse folding and RFdiffusion3 for generative protein design. While this tutorial focuses on RFdiffusion3, RosettaFold3 and ProteinMPNN can be installed in a similiar manner.  
 
 Install RFdiffusion3 using:  
 ```
@@ -73,7 +73,9 @@ foundry install rfd3
 By default, this command will download the checkpoint to <code>~/.foundry/checkpoints</code>.  
 
 Optional: If you prefer to store the checkpoint in a custom location (for example, on a cluster with limited home directory space), you can specify a custom checkpoint directory using the <code>--checkpoint-dir</code> flag:  
-<code>foundry install rfd3 --checkpoint-dir <path/to/checkpoint_dir></code>  
+```
+foundry install rfd3 --checkpoint-dir <path/to/checkpoint_dir>
+```
 This will download the checkpoint to the specified directory and register that directory via the <code>FOUNDRY_CHECKPOINT_DIRS</code> environment variable, so that RFdiffusion3 automatically searches it in future runs (in addition to the default <code>~/.foundry/checkpoints</code> location).
 
 ### Step 3: Verify the installation
@@ -96,5 +98,7 @@ Expected output:
 Inside <code>demo_output/</code>, you should find structure files (.cif.gz) for each demo example and summary score files (.json). If these were generated without errors, the installation was successful. You can expect the generated structures using a molecular visualization tool such as PyMOL, or examine the score files in a text editor.
 
 ## Glossary
+### <a id="foundry"></a>Foundry
+A toolkit from RosettaCommons that provides a unified Python CLI and framework for running multiple machine learning-based protein modeling and design tools (e.g., RFdiffusion3, RosettaFold3, ProteinMPNN). It also manages model weights (“checkpoints”) and common configurations.
 
 ## Resources & References
