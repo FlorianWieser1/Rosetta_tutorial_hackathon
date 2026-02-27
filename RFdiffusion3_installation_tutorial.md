@@ -7,6 +7,7 @@
     - [Step 1: Creating a conda environment](#step-1-creating-a-conda-environment)
     - [Step 2: Installing RFdiffusion3](#step-2-installing-rfdiffusion3)
     - [Step 3: Verify the installation](#step-3-verify-the-installation)
+- [GPU vs. CPU Execution](#gpu-vs-cpu-execution)
 - [Glossary](#glossary)
 - [Resources & References](#resources--references)
 
@@ -98,22 +99,71 @@ The output directory (<code>demo_output</code>) will be created automatically if
 Expected output:  
 Inside <code>demo_output/</code>, you should find structure files (.cif.gz) for each demo example and summary score files (.json). If these were generated without errors, the installation was successful. You can expect the generated structures using a molecular visualization tool such as PyMOL, or examine the score files in a text editor.
 
-## Glossary
-### <a id="foundry"></a>Foundry
-A toolkit from RosettaCommons that provides a unified Python [CLI](#cli) and framework for running multiple machine learning-based protein modeling and design tools (e.g., RFdiffusion3, RosettaFold3, ProteinMPNN). It also manages model weights (“[checkpoints](#checkpoint)”) and common configurations.
+# GPU vs CPU Execution
+RFdiffusion3 can run on both CPUs and GPUs, but the performance difference is very large:
+- CPU only: Suitable for small tests and learning. Inference will run, but it can be very slow — often tens of minutes per example or longer depending on your CPU.
+- GPU: Strongly recommended for real use, especially with multiple targets. A modern NVIDIA GPU can reduce runtime from minutes to seconds per design.
 
+## How RFdiffusion3 detects and uses your GPU
+To run RFdiffusion3 on a GPU no additional setup steps are required. It will automatically try to use a GPU if:
+1. A compatible NVIDIA GPU is prensent
+2. A matching CUDA toolkit is installed
+3. [pytorch](#PyTorch) can communicate with the GPU
+
+You can verify your GPU availability inside your [conda environment](#conda-environment) using:
+```
+python - << 'EOF'
+import torch
+print(torch.cuda.is_available())
+print(torch.cuda.device_count(), "GPUs detected")
+print(torch.cuda.get_device_name(0) if torch.cuda.is_available() else "No GPU")
+EOF
+```
+Make sure your Conda environment is activated before running this check.
+If <code>CUDA available: True</code> is printed and a GPU name appears, [pytorch](#PyTorch) can access your GPU.
+
+## Running an latest GPU architectures (e.g. Blackwell)
+Very recent NVIDIA GPU architectures (such as Lovelace or Blackwell) may require:
+- A sufficiently new NVIDIA driver
+- A compatible CUDA runtime
+- A recent [pytorch](#PyTorch) build that supports the architecture
+
+In most cases, installing RFdiffusion as described above is sufficient. However, for very new GPUs, you may need to upgrade [pytorch](#PyTorch) to a more recent (or nightly) build that includes support for the latest CUDA versions.
+
+Example:
+```
+# 1. Install rfd3 and its required dependencies
+pip install "rc-foundry[rfd3]"
+
+# 2. Upgrade to PyTorch nightly (cu128) to add Blackwell GPU support
+pip install --pre torch torchvision torchaudio \
+--index-url https://download.pytorch.org/whl/nightly/cu128 \
+--upgrade --force-reinstall
+```
+
+Important notes:
+- Replace cu128 with the CUDA version supported by your driver (check via <code>nvidia-smi</code>).
+- Installing a nightly [pytorch](#PyTorch) build overrides the version originally installed with <code>rc-foundry</code>.
+- After upgrading [pytorch](#PyTorch), verify GPU detection again using the Python check above.
+
+## Glossary
 ### <a id="checkpoint"></a>Checkpoint
 A binary file that contains the trained model weights of a neural network model. For RFdiffusion3, this file stores the learned parameters the model needs for inference. Without a checkpoint, the model cannot run.
 
-### <a id="conda-environment"></a>Conda Environment
-An isolated Python environment created using Conda or Miniconda. It keeps project dependencies separate from your system Python to prevent version conflicts.
+### <a id="foundry"></a>Foundry
+A toolkit from RosettaCommons that provides a unified Python [CLI](#cli) and framework for running multiple machine learning-based protein modeling and design tools (e.g., RFdiffusion3, RosettaFold3, ProteinMPNN). It also manages model weights (“[checkpoints](#checkpoint)”) and common configurations.
 
 ### <a id="cli"></a>CLI (Command-Line Interface)
 A way to interact with software by typing commands in a terminal. Foundry and RFdiffusion3 provide CLI commands like <code>foundry install rfd3</code> and <code>rfd3</code>
 
+### <a id="conda-environment"></a>Conda Environment
+An isolated Python environment created using Conda or Miniconda. It keeps project dependencies separate from your system Python to prevent version conflicts.
+
 ### <a id="environment-variable"></a>Environment Variable
 A value stored in the shell session that software can read to determine paths or settings (e.g., <code>FOUNDRY_CHECKPOINT_DIRS</code>).
 
+### <a id="torch"></a>PyTorch
+An open-source deep learning framework used to build and run neural network models. RFdiffusion3 is implemented using PyTorch. PyTorch handles tensor operations, GPU acceleration (via CUDA), and model inference.
 
 ## Resources & References
 - RosettaCommons Foundry (GitHub Repository) https://github.com/RosettaCommons/foundry
