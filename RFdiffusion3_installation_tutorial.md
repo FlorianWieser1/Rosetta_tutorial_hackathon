@@ -20,7 +20,7 @@ RFdiffusion3 is supported on Unix-based systems (Linux or macOS). Windows is not
 List of requirements:
 - Python 3.9-3.12
 - A working internet connection (for downloading the model and weights)
-- Sufficient disk space for model checkpoints (~3GB)
+- Sufficient disk space for model [checkpoints](#checkpoint) (~2.7 GB)
 - A downloading tool such as <code>wget</code> or </curl>
 - Optional: Git (if installing from source)
 - Optional but recommended: An NVIDIA GPU with a recent driver installation
@@ -29,7 +29,7 @@ List of requirements:
 ## Tutorial
 
 ### Step 1: Creating a conda environment
-We begin by creating an isolated Conda environment. Anaconda or its lightweight variant, Miniconda, allow you to isolate Python and its associated libraries from your system-wide installation. This prevents dependency conflicts and ensures that your global Python environment remains unaffected. If any issues occur during installation, the environment can simply be removed without impacting the rest of your system.
+We begin by creating an isolated [conda environment](#conda-environment). Anaconda or its lightweight variant, Miniconda, allow you to isolate Python and its associated libraries from your system-wide installation. This prevents dependency conflicts and ensures that your global Python environment remains unaffected. If any issues occur during installation, the environment can simply be removed without impacting the rest of your system.
 
 Open a terminal shell and input the following command:  
 ```
@@ -52,11 +52,11 @@ To verify that the correct Python interpreter is being used, run:
 ```
 which python
 ```
-The displayed path should point to the newly created Conda environment, for example:  
+The displayed path should point to the newly created [conda environment](#conda-environment), for example:  
 /home/florian_wieser/miniconda3/envs/RFD3/bin/python</code>  
 
 ### Step 2: Installing RFdiffusion3
-RFdiffusion 3 is distributed as part of the <code>rc-foundry</code> Python package. [Foundry](#foundry) is the RosettaCommons framework that provides a unified command-line interface for running multiple protein modeling and design deep learning models. It includes RosettaFold3 for structure prediction, ProteinMPNN for inverse folding and RFdiffusion3 for generative protein design. While this tutorial focuses on RFdiffusion3, RosettaFold3 and ProteinMPNN can be installed in a similiar manner.  
+RFdiffusion 3 is distributed as part of the <code>rc-foundry</code> Python package. [Foundry](#foundry) is the RosettaCommons framework that provides a unified [command-line interface](#cli) interface for running multiple protein modeling and design deep learning models. It includes RosettaFold3 for structure prediction, ProteinMPNN for inverse folding and RFdiffusion3 for generative protein design. While this tutorial focuses on RFdiffusion3, RosettaFold3 and ProteinMPNN can be installed in a similiar manner.  
 
 Install RFdiffusion3 using:  
 ```
@@ -65,18 +65,19 @@ pip install "rc-foundry[rfd3]"
 The quotation marks around <code>rc-foundry[rfd3]</code> are important in shells such as <code>zsh</code>, where square brackets have special meaning. Without quotes, the command may fail.
 
 #### Dowloading the model checkpoint  
-RFdiffusion3 requires a trained model file (a checkpoint) containing the learned neural network weights (~2.6 GB).  
-Download the checkpoint using:  
+RFdiffusion3 requires a trained model file (a [checkpoint](#checkpoint)) containing the learned neural network weights (~2.7 GB).  
+Download the [checkpoint](#checkpoint) using:  
 ```
 foundry install rfd3
 ```
-By default, this command will download the checkpoint to <code>~/.foundry/checkpoints</code>.  
+By default, this command will download the [checkpoint](#checkpoint) to <code>~/.foundry/checkpoints</code>.  
 
-Optional: If you prefer to store the checkpoint in a custom location (for example, on a cluster with limited home directory space), you can specify a custom checkpoint directory using the <code>--checkpoint-dir</code> flag:  
+Optional: If you prefer to store the [checkpoint](#checkpoint) in a custom location (for example, on a cluster with limited home directory space), you can specify a custom [checkpoint](#checkpoint) directory using the <code>--checkpoint-dir</code> flag:  
 ```
 foundry install rfd3 --checkpoint-dir <path/to/checkpoint_dir>
 ```
-This will download the checkpoint to the specified directory and register that directory via the <code>FOUNDRY_CHECKPOINT_DIRS</code> environment variable, so that RFdiffusion3 automatically searches it in future runs (in addition to the default <code>~/.foundry/checkpoints</code> location).
+This will download the [checkpoint](#checkpoint) to the specified directory and register that directory via the <code>FOUNDRY_CHECKPOINT_DIRS</code> [environment variable](#environment-variable), so that RFdiffusion3 automatically searches it in future runs (in addition to the default <code>~/.foundry/checkpoints</code> location).
+
 
 ### Step 3: Verify the installation
 To verify that RFdiffusion was installed correctly, we will download and run a minimal demo example from the official RFdiffusion3 repository.  
@@ -99,6 +100,19 @@ Inside <code>demo_output/</code>, you should find structure files (.cif.gz) for 
 
 ## Glossary
 ### <a id="foundry"></a>Foundry
-A toolkit from RosettaCommons that provides a unified Python CLI and framework for running multiple machine learning-based protein modeling and design tools (e.g., RFdiffusion3, RosettaFold3, ProteinMPNN). It also manages model weights (“checkpoints”) and common configurations.
+A toolkit from RosettaCommons that provides a unified Python [CLI](#cli) and framework for running multiple machine learning-based protein modeling and design tools (e.g., RFdiffusion3, RosettaFold3, ProteinMPNN). It also manages model weights (“[checkpoints](#checkpoint)”) and common configurations.
+
+### <a id="checkpoint"></a>Checkpoint
+A binary file that contains the trained model weights of a neural network model. For RFdiffusion3, this file stores the learned parameters the model needs for inference. Without a checkpoint, the model cannot run.
+
+### <a id="conda-environment"></a>Conda Environment
+An isolated Python environment created using Conda or Miniconda. It keeps project dependencies separate from your system Python to prevent version conflicts.
+
+### <a id="cli"></a>CLI (Command-Line Interface)
+A way to interact with software by typing commands in a terminal. Foundry and RFdiffusion3 provide CLI commands like <code>foundry install rfd3</code> and <code>rfd3</code>
+
+### <a id="environment-variable"></a>Environment Variable
+A value stored in the shell session that software can read to determine paths or settings (e.g., <code>FOUNDRY_CHECKPOINT_DIRS</code>).
+
 
 ## Resources & References
