@@ -3,7 +3,10 @@
 ## Table of Contents
 - [Learning Objective](#learning-objective)
 - [Prerequisites](#prerequisites)
-- [Setup](#setup)
+- [Tutorial](#tutorial)
+    - [Step 1: Creating a conda environment](#step-1-creating-a-conda-environment)
+    - [Step 2: Installing RFdiffusion3](#step-2-installing-rfdiffusion3)
+    - [Step 3: Verify the installation](#step-3-verify-the-installation)
 - [Glossary](#glossary)
 - [Resources & References](#resources--references)
 
@@ -23,13 +26,15 @@ List of requirements:
 - Optional but recommended: An NVIDIA GPU with a recent driver installation
 
 
-## Setup
+## Tutorial
 
 ### Step 1: Creating a conda environment
 We begin by creating an isolated Conda environment. Anaconda or its lightweight variant, Miniconda, allow you to isolate Python and its associated libraries from your system-wide installation. This prevents dependency conflicts and ensures that your global Python environment remains unaffected. If any issues occur during installation, the environment can simply be removed without impacting the rest of your system.
 
 Open a terminal shell and input the following command:  
-<code>conda create -n RFD3 python=3.12 -y</code>
+```
+conda create -n RFD3 python=3.12 -y
+```
 
 Here:
 - <code>-n RFD3 </code>specifies the name of the environment.
@@ -37,26 +42,34 @@ Here:
 - <code>-y </code>automatically confirms installation prompts
 
 Once the creation is completed, activate the environment:  
-<code>conda activate RFD3</code>
+```
+conda activate RFD3
+```
 
 You should now see <code>(RFD3)</code> prefixed in your terminal prompt, indicating that the environment is active. 
 ![image](conda_env_prompt.png)  
 To verify that the correct Python interpreter is being used, run:  
-<code>which python</code>  
+```
+which python
+```
 The displayed path should point to the newly created Conda environment, for example:  
-<code>/home/florian_wieser/miniconda3/envs/RFD3/bin/python</code>  
+/home/florian_wieser/miniconda3/envs/RFD3/bin/python</code>  
 
 ### Step 2: Installing RFdiffusion3
 RFdiffusion 3 is distributed as part of the <code>rc-foundry</code> Python package. Foundry is the RosettaCommons framework that provides a unified command-line interface for running multiple protein modeling and design deep learning models. It includes RosettaFold3 for structure prediction, ProteinMPNN for inverse folding and RFdiffusion3 for generative protein design. While this tutorial focuses on RFdiffusion3, RosettaFold3 and ProteinMPNN can be installed in a similiar manner.  
 
 Install RFdiffusion3 using:  
-<code>pip install "rc-foundry[rfd3]"</code>  
+```
+pip install "rc-foundry[rfd3]"
+```
 The quotation marks around <code>rc-foundry[rfd3]</code> are important in shells such as <code>zsh</code>, where square brackets have special meaning. Without quotes, the command may fail.
 
 #### Dowloading the model checkpoint  
 RFdiffusion3 requires a trained model file (a checkpoint) containing the learned neural network weights (~2.6 GB).  
 Download the checkpoint using:  
-<code>foundry install rfd3</code>  
+```
+foundry install rfd3
+```
 By default, this command will download the checkpoint to <code>~/.foundry/checkpoints</code>.  
 
 Optional: If you prefer to store the checkpoint in a custom location (for example, on a cluster with limited home directory space), you can specify a custom checkpoint directory using the <code>--checkpoint-dir</code> flag:  
@@ -66,15 +79,17 @@ This will download the checkpoint to the specified directory and register that d
 ### Step 3: Verify the installation
 To verify that RFdiffusion was installed correctly, we will download and run a minimal demo example from the official RFdiffusion3 repository.  
 First, create a directory for the example files (for example inside your project folder) and download the required inputs:  
-<code>mkdir -p input_pdbs  
+```
+mkdir -p input_pdbs  
 wget https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/demo.json  
 wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/M0255_1mg5.pdb  
 wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/7v11.pdb  
-wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/1bna.pdb</code>  
-
+wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/1bna.pdb
+```
 After downloading the files, run the demo using:  
-<code>rfd3 out_dir=demo_output inputs=demo.json</code>  
-
+```
+rfd3 out_dir=demo_output inputs=demo.json
+```
 The output directory (<code>demo_output</code>) will be created automatically if it does not exist already. On a modern GPU, this example typically completes within a few minutes. On a CPU, runtime may increase substantially depending on the hardware.  
 
 Expected output:  
