@@ -105,7 +105,7 @@ To verify that RFdiffusion was installed correctly, we will download and run a m
 First, create a directory for the example files (for example inside your project folder) and download the required inputs:  
 ```
 mkdir -p input_pdbs  
-wget https://github.com/RosettaCommons/foundry/tree/production/models/rfd3/docs/examples/demo.json
+wget https://raw.githubusercontent.com/RosettaCommons/foundry/refs/heads/production/models/rfd3/docs/examples/demo.json
 wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/M0255_1mg5.pdb  
 wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/7v11.pdb  
 wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/1bna.pdb
