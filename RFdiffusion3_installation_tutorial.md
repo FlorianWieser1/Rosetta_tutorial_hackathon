@@ -105,13 +105,15 @@ To verify that RFdiffusion was installed correctly, we will download and run a m
 First, create a directory for the example files (for example inside your project folder) and download the required inputs:  
 ```
 mkdir -p input_pdbs  
-wget https://raw.githubusercontent.com/RosettaCommons/foundry/refs/heads/production/models/rfd3/docs/examples/demo.json
+mkdir -p verify_installation
+wget -P verify_installation https://raw.githubusercontent.com/RosettaCommons/foundry/refs/heads/production/models/rfd3/docs/examples/demo.json
 wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/M0255_1mg5.pdb  
 wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/7v11.pdb  
 wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/1bna.pdb
 ```
 After downloading the files, run the demo using:  
 ```
+cd verify_installation
 rfd3 out_dir=demo_output inputs=demo.json
 ```
 The output directory (<code>demo_output</code>) will be created automatically if it does not exist already. On a modern GPU, this example typically completes within a few minutes. On a CPU, runtime may increase substantially depending on the hardware.  
