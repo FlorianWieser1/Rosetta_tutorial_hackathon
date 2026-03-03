@@ -4,6 +4,7 @@
 - [Learning Objective](#learning-objective)
 - [Prerequisites](#prerequisites)
 - [Tutorial](#tutorial)
+    - [Step 0 (optional): Requesting a GPU with SLURM](#step-0-optional-requesting-a-gpu-with-SLURM)
     - [Step 1: Creating a conda environment](#step-1-creating-a-conda-environment)
     - [Step 2: Installing RFdiffusion3](#step-2-installing-rfdiffusion3)
     - [Step 3: Verify the installation](#step-3-verify-the-installation)
@@ -14,8 +15,7 @@
 - [Resources & References](#resources--references)
 
 ## Learning Objective
-By the end of this tutorial, you will be able to install RFdiffusion3 on a Unix-based system using <code>pip</code> and verify that the installation was successful by running a minimal test example. You will also understand the difference between installing RFdiffusion3 as a released package and installing it directly from the GitHub repository, the latter enabling code modification and development workflows. 
-After completing this tutorial, you will have a working RFdiffusion3 environment capable of running basic design tasks and ready for use in downstream protein design workflows.
+By the end of this tutorial, you will be able to install RFdiffusion3 on a Unix-based system using <code>pip</code> and verify that the installation was successful by running a minimal test example. After completing this tutorial, you will have a working RFdiffusion3 environment capable of running basic design tasks and ready for use in downstream protein design workflows.
 
 ## Prerequisites  
 RFdiffusion3 is supported on Unix-based systems (Linux or macOS). Windows is not officially supported unless used through a Linux subsystem (e.g., WSL2). While not strictly required, using an environment manager such as Conda (Anaconda or Miniconda) is strongly recommended to isolate dependencies and avoid conflicts with your system-wide Python installation. For practical protein design workloads, a machine equipped with an NVIDIA GPU is highly recommended. GPU acceleration substantially reduces inference time. A recent NVIDIA driver installation is required. RFdiffusion3 can run on CPU-only systems, but runtime may increase significantly depending on the design task.
@@ -30,7 +30,7 @@ List of requirements:
 
 
 ## Tutorial
-### Step 0 (optional): Requesting a GPU with SLURM (Interactive Session)
+### Step 0 (optional): Requesting a GPU with SLURM
 If you are working on a shared computer cluster, a GPU is usually not available by default. In that case, you must first request one through the cluster's job scheduler. If you are installing RFdiffusion3 on your local machine, or if you plan to run it only on CPU, you can skip this step.
 
 To start an interactive session with one GPU, run:
