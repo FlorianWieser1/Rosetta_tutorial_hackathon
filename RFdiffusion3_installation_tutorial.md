@@ -22,10 +22,10 @@ RFdiffusion3 is supported on Unix-based systems (Linux or macOS). Windows is not
 
 List of requirements:
 - Python 3.9-3.12
+- Enviroment manager such as Conda (Anaconda or Miniconda)
 - A working internet connection (for downloading the model and weights)
 - Sufficient disk space for model [checkpoints](#checkpoint) (~2.7 GB)
 - A downloading tool such as <code>wget</code> or </curl>
-- Optional: Git (if installing from source)
 - Optional but recommended: An NVIDIA GPU with a recent driver installation
 
 
