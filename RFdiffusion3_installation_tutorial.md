@@ -30,6 +30,23 @@ List of requirements:
 
 
 ## Tutorial
+### Step 0 (optional): Requesting a GPU with SLURM (Interactive Session)
+If you are working on a shared computer cluster, a GPU is usually not available by default. In that case, you must first request one through the cluster's job scheduler. If you are installing RFdiffusion3 on your local machine, or if you plan to run it only on CPU, you can skip this step.
+
+To start an interactive session with one GPU, run:
+```
+srun --gres gpu:1 --pty $SHELL
+```
+This requests:
+- 1 GPU
+- an interactive shell session
+
+After the session starts, verify that a GPU was allocated by running:
+```
+nvidia-smi
+```
+
+If the allocation was successful, this command will display information such as the GPU model, the NVIDIA driver version and the current GPU memory usage. If you see <code>command not found</code>, or if no GPU is listed, then no GPU is available in your current session.
 
 ### Step 1: Creating a conda environment
 We begin by creating an isolated [conda environment](#conda-environment). Anaconda or its lightweight variant, Miniconda, allow you to isolate Python and its associated libraries from your system-wide installation. This prevents dependency conflicts and ensures that your global Python environment remains unaffected. If any issues occur during installation, the environment can simply be removed without impacting the rest of your system.
