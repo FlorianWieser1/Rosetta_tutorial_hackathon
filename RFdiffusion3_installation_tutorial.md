@@ -21,6 +21,7 @@ By the end of this tutorial, you will be able to install RFdiffusion3 on a Unix-
 RFdiffusion3 is supported on Unix-based systems (Linux or macOS). Windows is not officially supported unless used through a Linux subsystem (e.g., WSL2). While not strictly required, using an environment manager such as Conda (Anaconda or Miniconda) is strongly recommended to isolate dependencies and avoid conflicts with your system-wide Python installation. For practical protein design workloads, a machine equipped with an NVIDIA GPU is highly recommended. GPU acceleration substantially reduces inference time. A recent NVIDIA driver installation is required. RFdiffusion3 can run on CPU-only systems, but runtime may increase significantly depending on the design task.
 
 List of requirements:
+- Linux or macOS
 - Python 3.9-3.12
 - Enviroment manager such as Conda (Anaconda or Miniconda)
 - A working internet connection (for downloading the model and weights)
