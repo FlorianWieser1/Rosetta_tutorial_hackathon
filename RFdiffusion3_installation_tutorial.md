@@ -87,7 +87,7 @@ The displayed path should point to the newly created [conda environment](#conda-
 <code>/home/florian_wieser/miniconda3/envs/RFD3/bin/python</code>  
 
 ### Step 2: Installing RFdiffusion3
-RFdiffusion 3 is distributed as part of the <code>rc-foundry</code> Python package. [Foundry](#foundry) is the RosettaCommons framework that provides a unified [command-line interface](#cli) interface for running multiple protein modeling and design deep learning models. It includes RosettaFold3 for structure prediction, ProteinMPNN for inverse folding and RFdiffusion3 for generative protein design. While this tutorial focuses on RFdiffusion3, RosettaFold3 and ProteinMPNN can be installed in a similiar manner.  
+RFdiffusion3 is distributed as part of the <code>rc-foundry</code> Python package. [Foundry](#foundry) is the RosettaCommons framework that provides a unified [command-line interface](#cli) for running multiple protein modeling and design deep learning models. It includes RosettaFold3 for structure prediction, ProteinMPNN for inverse folding and RFdiffusion3 for generative protein design. While this tutorial focuses on RFdiffusion3, RosettaFold3 and ProteinMPNN can be installed in a similiar manner.  
 
 Install RFdiffusion3 using:  
 ```
@@ -96,8 +96,8 @@ pip install "rc-foundry[rfd3]"
 The quotation marks around <code>rc-foundry[rfd3]</code> are important in shells such as <code>zsh</code>, where square brackets have special meaning. Without quotes, the command may fail.
 
 #### Dowloading the model checkpoint  
-RFdiffusion3 requires a trained model file (a [checkpoint](#checkpoint)) containing the learned neural network weights (~2.7 GB).  
-Download the [checkpoint](#checkpoint) using:  
+RFdiffusion3 requires a trained model file (a [checkpoint](#checkpoint)) containing the learned neural network weights (~3 GB).  
+Download the [checkpoint](#checkpoint) file using:  
 ```
 foundry install rfd3
 ```
@@ -111,8 +111,7 @@ This will download the [checkpoint](#checkpoint) to the specified directory and 
 
 
 ### Step 3: Verify the installation
-To verify that RFdiffusion was installed correctly, we will download and run a minimal demo example from the official RFdiffusion3 repository.  
-First, create a directory for the example files (for example inside your project folder) and download the required inputs:  
+To verify that RFdiffusion3 was installed correctly, we will download and run a minimal demonstration example from the official RFdiffusion3 repository. First, create a working directory and a directory for the example input files, then download the required files:
 ```
 mkdir -p input_pdbs  
 mkdir -p verify_installation
