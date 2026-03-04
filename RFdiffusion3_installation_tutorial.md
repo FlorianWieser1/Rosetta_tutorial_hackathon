@@ -125,7 +125,7 @@ After downloading the files, enter the working directory and run the demo using:
 cd verify_installation
 rfd3 out_dir=demo_output inputs=demo.json
 ```
-The output directory (<code>demo_output</code>) will be created automatically if it does not exist already. On a modern GPU, this example typically completes within a few minutes. On a CPU, runtime may increase substantially depending on the hardware. Some warnings are expected.
+The output directory (<code>demo_output</code>) will be created automatically if it does not exist already. On a modern GPU, this example typically completes within a few minutes. On a CPU, runtime may increase substantially depending on the hardware. Some warning messages during execution are normal and can be ignored.
 
 Expected output:  
 Inside <code>demo_output/</code>, you should find structure files (.cif.gz) for each demo example and summary score files (.json). If these were generated without errors, the installation was successful. You can expect the generated structures using a molecular visualization tool such as PyMOL, or examine the score files in a text editor.
