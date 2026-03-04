@@ -79,7 +79,6 @@ conda activate RFD3
 ```
 
 You should now see <code>(RFD3)</code> prefixed in your terminal prompt, indicating that the environment is active. 
-![image](conda_env_prompt.png)  
 To verify that the correct Python interpreter is being used, run:  
 ```
 which python
