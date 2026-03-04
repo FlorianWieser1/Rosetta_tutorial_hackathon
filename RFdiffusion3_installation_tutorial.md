@@ -137,7 +137,7 @@ RFdiffusion3 can run on both CPUs and GPUs, but the performance difference is ve
 
 ## How RFdiffusion3 detects and uses your GPU
 To run RFdiffusion3 on a GPU no additional setup steps are required. It will automatically try to use a GPU if:
-1. A compatible NVIDIA GPU is prensent
+1. A compatible NVIDIA GPU is present
 2. A matching CUDA toolkit is installed
 3. [pytorch](#PyTorch) can communicate with the GPU
 
@@ -159,9 +159,9 @@ Very recent NVIDIA GPU architectures (such as Lovelace or Blackwell) may require
 - A compatible CUDA runtime
 - A recent [pytorch](#PyTorch) build that supports the architecture
 
-In most cases, installing RFdiffusion as described above is sufficient. However, for very new GPUs, you may need to upgrade [pytorch](#PyTorch) to a more recent (or nightly) build that includes support for the latest CUDA versions.
+In most cases, installing RFdiffusion3 as described above is sufficient. However, for very new GPUs, you may need to upgrade [pytorch](#PyTorch) to a more recent (or nightly) build that includes support for the latest CUDA versions.
 
-Example:
+Installation example:
 ```
 # 1. Install rfd3 and its required dependencies
 pip install "rc-foundry[rfd3]"
@@ -175,7 +175,7 @@ pip install --pre torch torchvision torchaudio \
 Important notes:
 - Replace cu128 with the CUDA version supported by your driver (check via <code>nvidia-smi</code>).
 - Installing a nightly [pytorch](#PyTorch) build overrides the version originally installed with <code>rc-foundry</code>.
-- After upgrading [pytorch](#PyTorch), verify GPU detection again using the Python check above.
+- After upgrading [pytorch](#PyTorch), verify GPU detection again using the [Python check](#how-rfdiffusion3-detects-and-uses-your-gpu) from above.
 
 ## Glossary
 ### <a id="checkpoint"></a>Checkpoint
