@@ -18,7 +18,7 @@
 By the end of this tutorial, you will be able to install RFdiffusion3 on a Unix-based system using <code>pip</code> and verify that the installation was successful by running a minimal test example. After completing this tutorial, you will have a working RFdiffusion3 environment capable of running basic design tasks and ready for use in downstream protein design workflows.
 
 ## Prerequisites  
-RFdiffusion3 is supported on Unix-based systems (Linux or macOS). Windows is not officially supported unless used through a Linux subsystem (e.g., WSL2). While not strictly required, using an environment manager such as Conda (Anaconda, Miniconda or Miniforge) is strongly recommended to isolate dependencies and avoid conflicts with your system-wide Python installation. For practical protein design workloads, a machine equipped with an NVIDIA GPU with ~3 GB of RAM is highly recommended, as GPU acceleration substantially reduces inference time. This requires a recent NVIDIA driver installation. RFdiffusion3 can also run on CPU-only systems, however, runtime may increase significantly depending on the design task.
+RFdiffusion3 is supported on Unix-based systems (Linux or macOS). Windows is not officially supported unless used through a Linux subsystem (e.g., WSL2). While not strictly required, using an environment manager such as Conda (Anaconda, Miniconda or Miniforge) is strongly recommended to isolate dependencies and avoid conflicts with your system-wide Python installation. For practical protein design workloads, a machine equipped with an NVIDIA GPU with ~3 GB of memory is highly recommended, as GPU acceleration substantially reduces inference time. This requires a recent NVIDIA driver installation. RFdiffusion3 can also run on CPU-only systems, however, runtime may increase significantly depending on the design task.
 
 List of requirements:
 - Linux or macOS
@@ -32,7 +32,7 @@ List of requirements:
 
 ## Tutorial
 ### Step 0 (optional): Requesting a GPU with SLURM
-If you want to run RFdiffusion3 on a GPU and are working on a shared scientific cluster, a GPU is usually not available by default. In that case, you must first request one through the cluster's job scheduler. If you are installing RFdiffusion3 on your local machine, or if you plan to run it only on CPU, you can [skip](#step-1-creating-a-conda-environment) this step.
+If you want to run RFdiffusion3 on a GPU and are working on a shared scientific cluster, a GPU is usually not available by default. In that case, you must first request one through the cluster's job scheduler (e.g., SLURM). If you are installing RFdiffusion3 on your local machine, or if you plan to run it only on CPU, you can [skip](#step-1-creating-a-conda-environment) this step.
 
 On many SLURM clusters, the exact command for allocating a GPU depends  on the local configuration. A general pattern is:
 ```
@@ -193,6 +193,9 @@ An isolated Python environment created using Conda or Miniconda. It keeps projec
 
 ### <a id="environment-variable"></a>Environment Variable
 A value stored in the shell session that software can read to determine paths or settings (e.g., <code>FOUNDRY_CHECKPOINT_DIRS</code>).
+
+### <a id="slurm"></a>SLURM
+An open-source job scheduler used on high-performance computing (HPC) clusters to manage and distribute computational workloads. It allocates resources such as CPUs, GPUs, memory, and nodes, and runs user-submitted jobs through a queueing system.
 
 ### <a id="torch"></a>PyTorch
 An open-source deep learning framework used to build and run neural network models. RFdiffusion3 is implemented using PyTorch. PyTorch handles tensor operations, GPU acceleration (via CUDA), and model inference.
