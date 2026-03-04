@@ -32,7 +32,7 @@ List of requirements:
 
 ## Tutorial
 ### Step 0 (optional): Requesting a GPU with SLURM
-If you want to run RFdiffusion3 on a GPU and are working on a shared scientific cluster, a GPU is usually not available by default. In that case, you must first request one through the cluster's job scheduler (e.g., SLURM). If you are installing RFdiffusion3 on your local machine, or if you plan to run it only on CPU, you can [skip](#step-1-creating-a-conda-environment) this step.
+If you want to run RFdiffusion3 on a GPU and are working on a shared scientific cluster, a GPU is usually not available by default. In that case, you must first request one through the cluster's job scheduler (e.g., [SLURM](#SLURM)). If you are installing RFdiffusion3 on your local machine, or if you plan to run it only on CPU, you can [skip](#step-1-creating-a-conda-environment) this step.
 
 On many SLURM clusters, the exact command for allocating a GPU depends  on the local configuration. A general pattern is:
 ```
@@ -194,7 +194,7 @@ An isolated Python environment created using Conda or Miniconda. It keeps projec
 ### <a id="environment-variable"></a>Environment Variable
 A value stored in the shell session that software can read to determine paths or settings (e.g., <code>FOUNDRY_CHECKPOINT_DIRS</code>).
 
-### <a id="slurm"></a>SLURM
+### <a id="SLURM"></a>SLURM
 An open-source job scheduler used on high-performance computing (HPC) clusters to manage and distribute computational workloads. It allocates resources such as CPUs, GPUs, memory, and nodes, and runs user-submitted jobs through a queueing system.
 
 ### <a id="torch"></a>PyTorch
