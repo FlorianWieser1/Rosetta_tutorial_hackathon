@@ -34,7 +34,7 @@ List of requirements:
 ### Step 0 (optional): Requesting a GPU with SLURM
 If you want to run RFdiffusion3 on a GPU and are working on a shared scientific cluster, a GPU is usually not available by default. In that case, you must first request one through the cluster's job scheduler. If you are installing RFdiffusion3 on your local machine, or if you plan to run it only on CPU, you can [skip](#step-1-creating-a-conda-environment) this step.
 
-On many SLURM clusters, the exact command for allocating a GPU depends for on the local configuration. A general pattern is:
+On many SLURM clusters, the exact command for allocating a GPU depends  on the local configuration. A general pattern is:
 ```
 salloc --gres=gpu:1 --account=<account-name> --partition=<partition-name>
 ```
@@ -61,7 +61,7 @@ nvidia-smi
 If the allocation was successful, this command will display information such as the GPU model, the NVIDIA driver version and the current GPU memory usage. If you see <code>command not found</code>, or if no GPU is listed, then no GPU is available in your current session.
 
 ### Step 1: Creating a conda environment
-We begin by creating an isolated [conda environment](#conda-environment). Anaconda or its lightweight variant, Miniconda, allow you to isolate Python and its associated libraries from your system-wide installation. This prevents dependency conflicts and ensures that your global Python environment remains unaffected. If any issues occur during installation, the environment can simply be removed without impacting the rest of your system.
+We begin by creating an isolated [conda environment](#conda-environment). Anaconda or its lightweight variants, Miniconda and Miniforge, allow you to isolate Python and its associated libraries from your system-wide installation. This prevents dependency conflicts and ensures that your global Python environment remains unaffected. If any issues occur during installation, the environment can simply be removed without impacting the rest of your system.
 
 Open a terminal shell and input the following command:  
 ```
