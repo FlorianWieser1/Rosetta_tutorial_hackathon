@@ -32,17 +32,28 @@ List of requirements:
 
 ## Tutorial
 ### Step 0 (optional): Requesting a GPU with SLURM
-If you are working on a shared computer cluster, a GPU is usually not available by default. In that case, you must first request one through the cluster's job scheduler. If you are installing RFdiffusion3 on your local machine, or if you plan to run it only on CPU, you can skip this step.
+If you want to run RFdiffusion3 on a GPU and are working on a shared scientific cluster, a GPU is usually not available by default. In that case, you must first request one through the cluster's job scheduler. If you are installing RFdiffusion3 on your local machine, or if you plan to run it only on CPU, you can [skip](#step-1-creating-a-conda-environment) this step.
 
-To start an interactive session with one GPU, run:
+On many SLURM clusters, the exact command for allocating a GPU depends for on the local configuration. A general pattern is:
 ```
-srun --gres=gpu:1 --pty $SHELL
+salloc --gres=gpu:1 --account=<account-name> --partition=<partition-name>
 ```
 This requests:
 - 1 GPU
-- an interactive shell session
+- access under the specified account
+- resources from the specified partition
 
-After the session starts, verify that a GPU was allocated by running:
+After the allocation is granted, start an interactive shell with:
+```
+srun --pty $SHELL
+```
+
+If you cluster requires explicit CPU cores and system memory, a more complete request may look like:
+```
+salloc --gres=gpu:1 --cpus-per-task=4 --mem=16G --time=01:00:00 --account=<account-name> --partition=<partition-name>
+```
+
+Once the session has started, verify that a GPU was allocated by running:
 ```
 nvidia-smi
 ```
