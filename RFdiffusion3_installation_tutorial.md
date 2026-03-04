@@ -18,15 +18,15 @@
 By the end of this tutorial, you will be able to install RFdiffusion3 on a Unix-based system using <code>pip</code> and verify that the installation was successful by running a minimal test example. After completing this tutorial, you will have a working RFdiffusion3 environment capable of running basic design tasks and ready for use in downstream protein design workflows.
 
 ## Prerequisites  
-RFdiffusion3 is supported on Unix-based systems (Linux or macOS). Windows is not officially supported unless used through a Linux subsystem (e.g., WSL2). While not strictly required, using an environment manager such as Conda (Anaconda or Miniconda) is strongly recommended to isolate dependencies and avoid conflicts with your system-wide Python installation. For practical protein design workloads, a machine equipped with an NVIDIA GPU is highly recommended. GPU acceleration substantially reduces inference time. A recent NVIDIA driver installation is required. RFdiffusion3 can run on CPU-only systems, but runtime may increase significantly depending on the design task.
+RFdiffusion3 is supported on Unix-based systems (Linux or macOS). Windows is not officially supported unless used through a Linux subsystem (e.g., WSL2). While not strictly required, using an environment manager such as Conda (Anaconda, Miniconda or Miniforge) is strongly recommended to isolate dependencies and avoid conflicts with your system-wide Python installation. For practical protein design workloads, a machine equipped with an NVIDIA GPU is highly recommended, as GPU acceleration substantially reduces inference time. This requires a recent NVIDIA driver installation. RFdiffusion3 can also run on CPU-only systems, however, runtime may increase significantly depending on the design task.
 
 List of requirements:
 - Linux or macOS
 - Python 3.9-3.12
-- Enviroment manager such as Conda (Anaconda or Miniconda)
+- Enviroment manager such as Conda (Anaconda, Miniconda or Miniforge)
 - A working internet connection (for downloading the model and weights)
-- Sufficient disk space for model [checkpoints](#checkpoint) (~2.7 GB)
-- A downloading tool such as <code>wget</code> or </curl>
+- Sufficient disk space for the model [checkpoint](#checkpoint) (~3 GB)
+- A downloading tool such as <code>wget</code> or <code>curl</code>
 - Optional but recommended: An NVIDIA GPU with a recent driver installation
 
 
@@ -116,7 +116,7 @@ After downloading the files, run the demo using:
 cd verify_installation
 rfd3 out_dir=demo_output inputs=demo.json
 ```
-The output directory (<code>demo_output</code>) will be created automatically if it does not exist already. On a modern GPU, this example typically completes within a few minutes. On a CPU, runtime may increase substantially depending on the hardware.  
+The output directory (<code>demo_output</code>) will be created automatically if it does not exist already. On a modern GPU, this example typically completes within a few minutes. On a CPU, runtime may increase substantially depending on the hardware. Some warnings are expected.
 
 Expected output:  
 Inside <code>demo_output/</code>, you should find structure files (.cif.gz) for each demo example and summary score files (.json). If these were generated without errors, the installation was successful. You can expect the generated structures using a molecular visualization tool such as PyMOL, or examine the score files in a text editor.
