@@ -27,7 +27,7 @@ List of requirements:
 - A working internet connection (for downloading the model and weights)
 - Sufficient disk space for the model [checkpoint](#checkpoint) (~3 GB)
 - A downloading tool such as <code>wget</code> or <code>curl</code>
-- Optional but recommended: An NVIDIA GPU with a recent driver installation
+- Optional but recommended: An NVIDIA GPU with a recent driver installation and at least ~16GB of RAM
 
 
 ## Tutorial
