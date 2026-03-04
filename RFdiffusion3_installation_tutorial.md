@@ -120,7 +120,7 @@ wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/prod
 wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/7v11.pdb  
 wget -P input_pdbs https://raw.githubusercontent.com/RosettaCommons/foundry/production/models/rfd3/docs/input_pdbs/1bna.pdb
 ```
-After downloading the files, run the demo using:  
+After downloading the files, enter the working directory and run the demo using:  
 ```
 cd verify_installation
 rfd3 out_dir=demo_output inputs=demo.json
