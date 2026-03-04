@@ -34,7 +34,7 @@ List of requirements:
 ### Step 0 (optional): Requesting a GPU with SLURM
 If you want to run RFdiffusion3 on a GPU and are working on a shared scientific cluster, a GPU is usually not available by default. In that case, you must first request one through the cluster's job scheduler (e.g., [SLURM](#SLURM)). If you are installing RFdiffusion3 on your local machine, or if you plan to run it only on CPU, you can [skip](#step-1-creating-a-conda-environment) this step.
 
-On many SLURM clusters, the exact command for allocating a GPU depends  on the local configuration. A general pattern is:
+On many [SLURM](#SLURM) clusters, the exact command for allocating a GPU depends  on the local configuration. A general pattern is:
 ```
 salloc --gres=gpu:1 --account=<account-name> --partition=<partition-name>
 ```
@@ -48,7 +48,7 @@ After the allocation is granted, start an interactive shell with:
 srun --pty $SHELL
 ```
 
-If you cluster requires explicit CPU cores and system memory, a more complete request may look like:
+If you cluster requires explicit CPU cores, system memory and a time limit, a more complete request may look like:
 ```
 salloc --gres=gpu:1 --cpus-per-task=4 --mem=16G --time=01:00:00 --account=<account-name> --partition=<partition-name>
 ```
@@ -61,9 +61,9 @@ nvidia-smi
 If the allocation was successful, this command will display information such as the GPU model, the NVIDIA driver version and the current GPU memory usage. If you see <code>command not found</code>, or if no GPU is listed, then no GPU is available in your current session.
 
 ### Step 1: Creating a conda environment
-We begin by creating an isolated [conda environment](#conda-environment). Anaconda or its lightweight variants, Miniconda and Miniforge, allow you to isolate Python and its associated libraries from your system-wide installation. This prevents dependency conflicts and ensures that your global Python environment remains unaffected. If any issues occur during installation, the environment can simply be removed without impacting the rest of your system.
+Next, create an isolated [conda environment](#conda-environment). Anaconda or its lightweight variants, Miniconda and Miniforge, allow you to isolate Python and its associated libraries from your system-wide installation. This prevents dependency conflicts and ensures that your global Python environment remains unaffected. If any issues occur during installation, the environment can simply be removed without impacting the rest of your system.
 
-Open a terminal shell and input the following command:  
+In the terminal input the following command:  
 ```
 conda create -n RFD3 python=3.12 -y
 ```
@@ -73,7 +73,7 @@ Here:
 - <code>python=3.12 </code>defines the Python version (a recent version like 3.9-3.12 is recommended).
 - <code>-y </code>automatically confirms installation prompts
 
-Once the creation is completed, activate the environment:  
+Once the creation is completed, activate the environment with:  
 ```
 conda activate RFD3
 ```
@@ -84,7 +84,7 @@ To verify that the correct Python interpreter is being used, run:
 which python
 ```
 The displayed path should point to the newly created [conda environment](#conda-environment), for example:  
-/home/florian_wieser/miniconda3/envs/RFD3/bin/python</code>  
+<code>/home/florian_wieser/miniconda3/envs/RFD3/bin/python</code>  
 
 ### Step 2: Installing RFdiffusion3
 RFdiffusion 3 is distributed as part of the <code>rc-foundry</code> Python package. [Foundry](#foundry) is the RosettaCommons framework that provides a unified [command-line interface](#cli) interface for running multiple protein modeling and design deep learning models. It includes RosettaFold3 for structure prediction, ProteinMPNN for inverse folding and RFdiffusion3 for generative protein design. While this tutorial focuses on RFdiffusion3, RosettaFold3 and ProteinMPNN can be installed in a similiar manner.  
